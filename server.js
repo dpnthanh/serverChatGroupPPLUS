@@ -3,8 +3,10 @@ var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
+var os = require("os");
 server.listen(process.env.PORT || 3000);
 console.log('server runing...');
+console.log(os.hostname());
 io.sockets.on('connection', function (socket){
 
 	console.log('user conected');
@@ -27,7 +29,6 @@ io.sockets.on('connection', function (socket){
 		io.sockets.emit('new mess2', { text: socket.un + " : " + mess });
 
 	});
-	
+
 
 });
-
