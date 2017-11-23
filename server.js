@@ -5,7 +5,7 @@ var io = require("socket.io").listen(server);
 var fs = require("fs");
 var url = require('url');
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 80);
 console.log('server runing...');
 
 io.sockets.on('connection', function (socket){
