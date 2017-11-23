@@ -4,11 +4,7 @@ var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
 var url = require('url');
-var child_process = require("child_process");
-child_process.exec("hostname -f", function(err, stdout, stderr) {
-  var hostname = stdout.trim();
-	console.log(hostname);
-});
+
 server.listen(process.env.PORT || 3000);
 console.log('server runing...');
 
@@ -34,6 +30,5 @@ io.sockets.on('connection', function (socket){
 		io.sockets.emit('new mess2', { text: socket.un + " : " + mess });
 
 	});
-
 
 });
