@@ -3,10 +3,15 @@ var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
-var os = require("os");
+var url = require('url');
+var child_process = require("child_process");
+child_process.exec("hostname -f", function(err, stdout, stderr) {
+  var hostname = stdout.trim();
+	console.log(hostname);
+});
 server.listen(process.env.PORT || 3000);
 console.log('server runing...');
-console.log(os.hostname());
+
 io.sockets.on('connection', function (socket){
 
 	console.log('user conected');
